@@ -18,6 +18,11 @@ class Hash implements \Stringable
     {
         return $this->hasher->validateHash($input, $this->value);
     }
+    
+    public function needRehash(): bool
+    {
+        return $this->hasher->needRehash($this->value);
+    }
 
     /**
      * @param HasherInterface|null $hasher
