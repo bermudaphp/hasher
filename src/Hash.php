@@ -6,7 +6,7 @@ class Hash implements \Stringable
 {
     public function __construct(
       public readonly string $value, 
-      public readonly HasherInterface $hasher = new Hasher
+      public readonly HasherInterface $hasher = new PasswordHasher
     ) {
     }
 
@@ -29,7 +29,7 @@ class Hash implements \Stringable
 
         if ($hasher == null) {
             return $staticHasher != null ? $staticHasher
-                : $staticHasher = new Hasher ;
+                : $staticHasher = new PasswordHasher ;
         } else {
             $staticHasher = $hasher;
         }
