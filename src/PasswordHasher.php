@@ -21,7 +21,7 @@ final class PasswordHasher implements HasherInterface
      */
     public function generateHash(string $input): string
     {
-        return password_hash($input, $this->algorithm, $this->options);
+        return \password_hash($input, $this->algorithm, $this->options);
     }
 
     /**
@@ -29,7 +29,7 @@ final class PasswordHasher implements HasherInterface
      */
     public function validateHash(string $input, string $hash): bool
     {
-        return password_verify($input, $hash);
+        return \password_verify($input, $hash);
     }
   
     /**
@@ -37,6 +37,6 @@ final class PasswordHasher implements HasherInterface
      */
     public function needRehash(string $hash): bool
     {
-        return password_needs_rehash($hash, $this->algorithm, $this->options);
+        return \password_needs_rehash($hash, $this->algorithm, $this->options);
     }
 }
