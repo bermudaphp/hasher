@@ -8,10 +8,10 @@ final class PasswordHasher implements HasherInterface
         public readonly string $algorithm = PASSWORD_ARGON2ID,
         public readonly array $options = []
     ) {
-        if (!in_array($this->algorithm, password_algos())) {
+        if (!in_array($this->algorithm, \password_algos())) {
             throw new \InvalidArgumentException(
                 "Invalid algorithm: [ $this->algorithm ]. Supported algorithms: "
-                . join(',', password_algos())
+                . join(',', \password_algos())
             );
         }
     }
