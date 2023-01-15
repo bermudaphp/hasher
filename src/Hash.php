@@ -6,7 +6,7 @@ class Hash implements \Stringable
 {
     public function __construct(
       public readonly string $value, 
-      private readonly HasherInterface $hasher = new Hasher
+      public readonly HasherInterface $hasher = new Hasher
     ) {
     }
 
