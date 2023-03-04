@@ -43,19 +43,18 @@ class Hash implements \Stringable
     }
 
     /**
-     * @param string $hash
-     * @return static
+     * @return string
      */
-    public static function create(string $hash): self
+    public function __toString(): string
     {
-        return new static($hash, static::hasher());
+        return $this->value;
     }
 
     /**
      * @param string $input
      * @return static
      */
-    public static function createFromString(string $input): self
+    public static function fromString(string $input): self
     {
         return new static(($hasher = static::hasher())->generateHash($input), $hasher);
     }
