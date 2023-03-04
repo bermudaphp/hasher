@@ -4,6 +4,9 @@ namespace Bermuda\Hasher;
 
 final class PasswordHasher implements HasherInterface
 {
+    public const algorithm = 'algorithm';
+    public const options = 'options';
+    
     public function __construct(
         public readonly string $algorithm = PASSWORD_ARGON2ID,
         public readonly array $options = []
