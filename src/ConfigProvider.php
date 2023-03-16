@@ -34,7 +34,7 @@ class ConfigProvider extends \Bermuda\Config\ConfigProvider
                 PasswordHasher::options => []
             ],
 
-            self::bootstrap => [static function($app) {
+            self::bootstrap => [self::configKey => static function($app) {
                 Hash::hasher($app->get(HasherInterface::class));
             }]
         ];
