@@ -3,6 +3,7 @@
 namespace Bermuda\Hasher;
 
 use Psr\Container\ContainerInterface;
+use function Bermuda\Config\callback;
 
 class ConfigProvider extends \Bermuda\Config\ConfigProvider
 {
@@ -34,9 +35,9 @@ class ConfigProvider extends \Bermuda\Config\ConfigProvider
                 PasswordHasher::options => []
             ],
 
-            self::bootstrap => [self::configKey => static function($app) {
+            self::bootstrap => [self::configKey => callback(static function($app) {
                 Hash::hasher($app->get(HasherInterface::class));
-            }]
+            })]
         ];
     }
 }
