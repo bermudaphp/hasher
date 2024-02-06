@@ -2,11 +2,12 @@
 
 namespace Bermuda\Hasher;
 
-class Hash implements \Stringable
+final class Hash implements \Stringable
 {
     public function __construct(
       public readonly string $value, 
-      public readonly HasherInterface $hasher = new PasswordHasher
+      public readonly HasherInterface $hasher = new PasswordHasher,
+      public readonly ?string $rawValue = null
     ) {
     }
 
@@ -56,6 +57,6 @@ class Hash implements \Stringable
      */
     public static function fromString(string $input): self
     {
-        return new static(($hasher = static::hasher())->generateHash($input), $hasher);
+        return new static(($hasher = static::hasher())->generateHash($input), $hasher, $input);
     }
 }
